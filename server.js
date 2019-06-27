@@ -53,6 +53,19 @@ server.post("/posts", function(req,res){
   });
 });
 
+server.delete("/posts/:id", function(req,res){
+  postsModel.findByIdAndDelete(req.params.id).then(function() { //we dont recieve anything
+    res.status( 204 );
+    res.send();
+  }).catch(function(error){
+    var response = {
+      msg: error.message
+    };
+    res.status( 400 );
+    res.json( response );
+  });
+});
+
 // server.post("/posts", function (req,res){
 //   var new_post = {
 //     title: req.body.title,
