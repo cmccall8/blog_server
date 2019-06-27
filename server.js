@@ -2,7 +2,7 @@ const express = require( "express" );
 const cors = require( "cors" );
 
 var server = express();
-var port = 8080;
+var port =  process.env.PORT || 3000;
 
 //middleware
 server.use(cors());
